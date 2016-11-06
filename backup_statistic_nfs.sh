@@ -18,7 +18,7 @@ find ${NFS_DIR} -type f -mtime -30 > w5
 
 cat w1 w2 w3 w4 w5 | sort -u > wall
 cat $alllist | sort -u > all
-grep -vF -f wall all > backup
+comm -2 -3 all wall > backup
 
 tar -vzcf statistic-nfs.`date +'%Y%m%d%H%M%S'`.tgz -T backup
 
